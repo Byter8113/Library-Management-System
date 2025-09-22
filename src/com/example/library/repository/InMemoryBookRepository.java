@@ -1,26 +1,31 @@
 package com.example.library.repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import com.example.library.interfaces.BookRepository;
 import com.example.library.model.Book;
 
 public class InMemoryBookRepository implements BookRepository{
-    HashMap<Integer, Book> library = new HashMap<>();
-    static List<Book> listBooks = new ArrayList<>();
-
+    private HashMap<Integer, Book> library = new HashMap<>();
+    
     @Override
-    public void save(Book book, int id) {
+    public void save(Book book) {
+        int id = new Random().nextInt();
+        if(library.get(id) != null) {
+            save(book);
+        } else if(library.get(book) != null) {
+            book.setId(id);
+            System.out.println("This book has already been added.");
+            return;
+        }
         library.put(id, book);
-        listBooks.add(book);
     }
 
     @Override
-    public List<Book> findAll() {
-        return listBooks;
+    public HashMap<Integer, Book> findAll() {
+        return library;
     }
 
     @Override

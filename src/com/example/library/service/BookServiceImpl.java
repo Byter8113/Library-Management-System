@@ -7,7 +7,6 @@ import com.example.library.model.Book;
 import com.example.library.repository.InMemoryBookRepository;
 
 public class BookServiceImpl implements BookService {
-    static int id = 0;
     InMemoryBookRepository bookRepository;
     
     BookServiceImpl() {
@@ -16,9 +15,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book addBook(String title, String author) {
-        id++;
-        Book book = new Book(id, title, author, false);
-        bookRepository.save(book, id);
+        Book book = new Book(0, title, author, false);
         return book;
     }
 
@@ -26,5 +23,4 @@ public class BookServiceImpl implements BookService {
     public List<Book> listBooks() {
         return listBooks();
     }
-
 }
