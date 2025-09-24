@@ -1,7 +1,7 @@
 package com.example.library.model;
 
 public class Book {
-    private int id;
+    private long id;
     private String title;
     private String author;
     private boolean available;
@@ -13,11 +13,11 @@ public class Book {
         this.available = available;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     
-    public int getId() {
+    public long getId() {
         return id;
     }
     
