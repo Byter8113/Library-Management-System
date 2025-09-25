@@ -1,6 +1,7 @@
 package com.example.library.service;
 
 import java.util.List;
+import java.util.Random;
 
 import com.example.library.interfaces.BookService;
 import com.example.library.model.Book;
@@ -8,14 +9,30 @@ import com.example.library.repository.InMemoryBookRepository;
 
 public class BookServiceImpl implements BookService {
     InMemoryBookRepository bookRepository;
-    
+    private static long size = 0; 
+
+    private long generateId() {
+        // long id = new Random().nextLong();
+        // if(library.get(id) != null) {
+        //     save(book);
+        // } else if(library.get(book) != null) {
+        //     book.setId(id);
+        //     System.out.println("This book has already been added.");
+        //     return id;
+        // }
+        // return null;
+        return ++size;
+    }
+
+
     BookServiceImpl() {
         bookRepository = new InMemoryBookRepository();
     }
 
     @Override
     public Book addBook(String title, String author) {
-        Book book = new Book(0, title, author, false);
+        long id = generateId();
+        Book book = new Book(id, title, author, false);
         bookRepository.save(book);
         return book;
     }
