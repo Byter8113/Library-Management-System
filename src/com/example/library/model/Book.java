@@ -1,23 +1,23 @@
 package com.example.library.model;
 
 public class Book {
-    private int id;
+    private long id;
     private String title;
     private String author;
     private boolean available;
     
-    Book(int id, String title, String author, boolean available) {
+    public Book(long id, String title, String author, boolean available) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.available = available;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     
-    public int getId() {
+    public long getId() {
         return id;
     }
     
