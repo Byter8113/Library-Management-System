@@ -8,7 +8,7 @@ import com.example.library.repository.InMemoryBookRepository;
 
 public class BookServiceImpl implements BookService {
     private static long size = 0; 
-    static InMemoryBookRepository bookRepository = new InMemoryBookRepository();
+    private static InMemoryBookRepository bookRepository = new InMemoryBookRepository();
 
     private long generateId() {
         return ++size;
