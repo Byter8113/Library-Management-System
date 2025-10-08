@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import com.example.library.model.Book;
 
-public interface BookRepository {
-    List<Book> findAll();
-    Optional<Book> findById(int id);
-    void save(Book book);
+public interface BookRepository<T> {
+    List<T> findAll();
+    Optional<T> findById(int id);
+    void save(T material);
 }
