@@ -1,5 +1,7 @@
 package com.example.library.controller;
 
+import java.util.List;
+
 import com.example.library.service.BookServiceImpl;
 
 public class BookController {
@@ -7,7 +9,7 @@ public class BookController {
     public void addBook(String title, String author) {
         service.addBook(title, author);
     }   
-    public void listBooks() {
-        System.out.println(service.listBooks());
+    public List listBooks() {
+        return service.listBooks();    
     } 
 }

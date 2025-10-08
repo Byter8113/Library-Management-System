@@ -43,6 +43,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book: " + id + "\ntitle: " + title + "\nauthor: " + author + "\navailable: " + available + "\n";
+        return "\nBook: " + id + "\ntitle: " + title + "\nauthor: " + author + "\navailable: " + available + "\n";
     }
 }
