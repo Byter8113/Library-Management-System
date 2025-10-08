@@ -15,11 +15,11 @@ public class ConsoleView {
         while(true) {
             System.out.println("Choose: \n1. Add book \n2. List all books \n3. Exit");
             promt = scanner.nextLine();
-            if (promt.equals("Add book")) {
+            if (promt.equals("1")) {
                 addBookFlow();
-            } else if(promt.equals("List all books")) {
+            } else if(promt.equals("2")) {
                 listBooksFlow();
-            } else if(promt.equals("Exit")) {
+            } else if(promt.equals("3")) {
                 return;
             } else if(promt != null) {
                 System.out.println("such a team does not exist");
