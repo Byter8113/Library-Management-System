@@ -24,7 +24,7 @@ public class InMemoryBookRepository implements BookRepository{
     }
 
     @Override
-    public Optional<Book> findById(int id) {
+    public Optional<Book> findById(long id) {
         return Optional.ofNullable(library.get(id));
     }
 }
