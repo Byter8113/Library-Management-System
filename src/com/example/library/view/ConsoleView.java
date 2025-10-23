@@ -1,5 +1,6 @@
 package com.example.library.view;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,6 +44,8 @@ public class ConsoleView {
             } else if(promt.equals("3")) {
                 // eBooks();
             } else if(promt.equals("4")) {
+                return;
+            } else {
                 System.out.println("such a team does not exist");
             }
         }
@@ -66,8 +69,9 @@ public class ConsoleView {
     }
 
     public void magazines() {
+        boolean flag = true;
         String promt = null;
-        while(true) {
+        while(flag) {
             System.out.println("Choose: \n1. Add magazine \n2. List all magazines \n3. Back");
             promt = scanner.nextLine();
             if (promt.equals("1")) {
@@ -92,14 +96,18 @@ public class ConsoleView {
     }
 
     private void addMagazineFlow() {
-        System.out.println("Enter author: ");
+        System.out.println("Enter title: ");
         String title = scanner.nextLine();
         System.out.println("Enter publisher: ");
         String publisher = scanner.nextLine();
         System.out.println("Enter issueNumber: ");
-        int issueNumber = scanner.nextInt();
-        magazinesController.addMagazine(title, publisher, issueNumber);
-        System.out.println("Magazine was added!");
+        try {
+            int issueNumber = scanner.nextInt();
+            magazinesController.addMagazine(title, publisher, issueNumber);
+            System.out.println("Magazine was added!");
+        } catch(InputMismatchException e) {
+            System.out.println("You writed not number!");
+        }
     }
 
     private void listMagazinesFlow() {
