@@ -8,6 +8,7 @@ import com.example.library.controller.BookController;
 import com.example.library.controller.EBookController;
 import com.example.library.controller.MagazineController;
 import com.example.library.model.Book;
+import com.example.library.model.EBook;
 import com.example.library.model.Magazine;
 
 public class ConsoleView {
@@ -42,7 +43,7 @@ public class ConsoleView {
             } else if(promt.equals("2")) {
                 magazines();
             } else if(promt.equals("3")) {
-                // eBooks();
+                eBooks();
             } else if(promt.equals("4")) {
                 return;
             } else {
@@ -86,6 +87,23 @@ public class ConsoleView {
         }
     }
 
+    public void eBooks() {
+        String promt = null;
+        while(true) {
+            System.out.println("Choose: \n1. Add eBook \n2. List all eBooks \n3. Back");
+            promt = scanner.nextLine();
+            if (promt.equals("1")) {
+                addEBookFlow();
+            } else if(promt.equals("2")) {
+                listEBooksFlow();
+            } else if(promt.equals("3")) {
+                start();
+            } else if(promt != null) {
+                System.out.println("such a team does not exist");
+            }
+        }
+    }
+
     private void addBookFlow() {
         System.out.println("Enter author: ");
         String title = scanner.nextLine();
@@ -110,10 +128,21 @@ public class ConsoleView {
         }
     }
 
+    private void addEBookFlow() {
+        System.out.println("Enter author: ");
+        String title = scanner.nextLine();
+        System.out.println("Enter title: ");
+        String author = scanner.nextLine();
+        System.out.println("Enter file format: ");
+        String fileFormat = scanner.nextLine();
+        eBooksController.addEBook(title, author, fileFormat);;
+        System.out.println("Book was added!");
+    }
+
     private void listMagazinesFlow() {
-        List<Book> listMagazines = magazinesController.listMagazines();  
+        List<Magazine> listMagazines = magazinesController.listMagazines();  
         if (listMagazines.isEmpty()) {
-            System.out.println("No magazi!");
+            System.out.println("No magazines!");
         } else {
             System.out.println(listMagazines);
         }
@@ -125,6 +154,15 @@ public class ConsoleView {
             System.out.println("No books!");
         } else {
             System.out.println(listBooks);
+        }
+    }
+
+    private void listEBooksFlow() {
+        List<EBook> listEBooks = eBooksController.listEBooks();  
+        if (listEBooks.isEmpty()) {
+            System.out.println("No eBooks!");
+        } else {
+            System.out.println(listEBooks);
         }
     }
 }
