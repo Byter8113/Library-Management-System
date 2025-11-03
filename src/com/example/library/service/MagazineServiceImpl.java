@@ -15,9 +15,9 @@ public class MagazineServiceImpl implements MagazineService{
     }
     
     @Override
-    public Magazine addMagazine(String title, String publisher, int issueNumber) {
+    public Magazine addMagazine(String title, boolean available, String publisher, int issueNumber) {
         long id = generateId();
-        Magazine magazine = new Magazine(id, title, false, publisher, issueNumber);
+        Magazine magazine = new Magazine(id, title, available, publisher, issueNumber);
         magazineRepository.save(magazine);
         return magazine;
     }

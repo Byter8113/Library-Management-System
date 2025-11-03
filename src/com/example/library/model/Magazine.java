@@ -11,14 +11,8 @@ public class Magazine extends LibraryItem {
     }
 
     @Override
-    public String toString() {
-        return getDescription();
-    }
-
-    @Override
     public String getDescription() {
-        return "\nMagazine: " + getId() + "\ntitle: " + getTitle() + "\npublisher: " + publisher + 
-        "\nissue number: " + issueNumber + "\navailable: " + getAvailable() + "\n";
+        return "Magazine: " + getTitle() + " (Issue " + issueNumber + ") by " + publisher;
     }
 
 }
